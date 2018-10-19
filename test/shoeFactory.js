@@ -1,25 +1,37 @@
 function ShoeCatalogues (){
 
 
-    // Create an object that stores all the shoe data
+    function getShoes(){
+        const shoes = [
+          {
+              color: 'blue',
+              brand: 'nike',
+              size: '5',
+              stock: '4'
+          },
+          {
+              color: 'red',
+              brand: 'addidas',
+              size: '6',
+              stock: '5'
+          },
+          {
+              color:'black',
+              brand:'puma',
+              size:'7',
+              stock:'3'
+          }
+
+        ]
+
+        return shoes
+
+    }
+
     
-        // let shoes = {
-        //     id: '1'
-        //     brand: "nike",
-        //     size:"7",
-        //     color: "red",
-        //     stock: '2'
-        // }
-    
-        function addShoe(size,brand,colour){
-    
-        }
-    
-        return{
-            addShoe,
-            
-        }
-    
+    return{
+        getShoes,
+    }
     
     
     };
