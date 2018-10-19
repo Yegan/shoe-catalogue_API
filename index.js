@@ -10,11 +10,13 @@ const brandBtn = document.querySelector('.brand')
 // instance of factory function
 const shoeFunc = ShoeCatalogues()
 const displayShoeFunc = shoeFunc.getShoes()
-console.log(displayShoeFunc)
+
+filterBtn.addEventListener('click',function(){
+    display.innerHTML = compiled({shoes : displayShoeFunc})
+
+})
 
 
-
-display.innerHTML = compiled({shoes : displayShoeFunc})
 
 
 
