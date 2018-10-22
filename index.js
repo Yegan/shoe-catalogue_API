@@ -23,9 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(function(err) {
                 alert(err);
             });
-
-        // below object takes in a parameter
-        // display shoes button
         
         
     }
@@ -49,11 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(function(err){
                 alert(err)
             })
-        // showShoes(filterShoes);
-
-        // console.log(filterShoes)
-        // display.innerHTML = compiled({ shoes: filterShoes })
-
 
     })
 
