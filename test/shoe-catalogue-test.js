@@ -1,15 +1,15 @@
-describe('The shoe catalogue add button should add shoes to display on the screen once a colour, size and brand are selected', function(){
-    it('The shoe catalogue should take in 3 paramaters of brand,size and colour and print an object', function(){
+describe('The shoe catalogue brand filter should filter the shoes according to the brand selected', function(){
+    it('The shoe catalogue brand filter should check if a certain brand is selected and return shoes of only that brand', function(){
         let ShoeCatalogue = ShoeCatalogues()
 
-        let shoeFunc = ShoeCatalogue.addShoe()
-        let shoes = {
-                id: '1',
-                brand: "nike",
-                size:"7",
-                color: "red",
-                stock: '2'
-            }
+        let shoeFunc = ShoeCatalogue.filterShoes( 'Nike');
+
+        let shoes = [{
+                brand: "Nike",
+                size:5,
+                color: "blue",
+                stock: 4
+            }];
 
         assert.deepEqual(shoeFunc, shoes)
 
