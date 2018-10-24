@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const userTemplate = document.querySelector('.userTemplate').innerHTML
+    const userTemplate = document.querySelector('.userTemplateFancy').innerHTML
     const display = document.querySelector('.displayTable')
     const shoeBrand = document.querySelector('.brand')
     const compiled = Handlebars.compile(userTemplate)

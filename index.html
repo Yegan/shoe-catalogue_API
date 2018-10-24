@@ -26,70 +26,94 @@
     {{/each}}
     </script>
 
+    <script type='text/x-template' class='userTemplateFancy'>
+    {{#each shoes}}
+    <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">{{brand}} - {{color}}</a>
+                </h4>
+                <h5>{{size}}</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">★ ★ ★ ★ ☆</small>
+              </div>
+            </div>
+          </div>
+    {{/each}}
+    </script>
+
 </head>
 
 <body>
 
-    <!-- Default dropright buttons -->
-    <br>
+    <div class="navgation-top">
+      
 
-    <div class="row justify-content-md-center">
-            <div class="row justify-content-md-center">
-                    <div class="button-add">
-                        <button type="button" class="btn btn-lg btn-primary btn-block"">Add to cart</button>
+        <ul class="nav justify-content-end">
+                <div class="Yegan-title">
+                        <h3 class="nav-Yegan"> Shop</h3>
                     </div>
-                </div>
-                <div class="row justify-content-md-center input-group mb-3 col-md-auto">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                        </div>
-                        <select class="custom-select brand" id="inputGroupSelect01">
-                          <option selected value="">Choose...</option>
-                          <option class="brand" value="Nike">Nike</option>
-                          <option class="brand" value="Addidas">Addidas</option>
-                          <option class="brand" value="Puma">Puma</option>
-                        </select>
-                      </div>
+            <li class="nav-item">
+                <a class="nav-link topNav" href="#">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link topNav" href="#">SIGN-UP</a>
+            </li>
+        </ul>
+
+    </div>
+ 
+
+    <h5 class="select-shoe"> Please select shoe:</h5>
+                <div class="row justify-content-md-center input-group">
+                   
+                    <select class="custom-select brand" id="inputGroupSelect01">
+                        <option selected value="">Choose...</option>
+                        <option class="brand" value="Nike">Nike</option>
+                        <option class="brand" value="Addidas">Addidas</option>
+                        <option class="brand" value="Puma">Puma</option>
+                    </select>
+                 </div>
 
 
-        <div class="filter-button">
-                <button type="button" class="btn btn-lg btn-primary btn-block filter"">Display Shoes</button>
+            <div class="row filter-button">
+                <button type="button" class="btn-primary btn-block filter"">Show Shoes</button>
             </div>
             
 
-    </div>
-    <br>
-    <div class="Add-btn row justify-content-md-center">
-
-        <input type="text" placeholder="Brand">
-        <input type="text" placeholder="Size">
-        <input type="text" placeholder="Stock">
-        <input type="text" placeholder="Colour">
     
-        <button type="button" class="btn-primary">Add</button>
+      
 
-    </div>
-    <br>
+            <div class="row justify-content-md-center"> 
 
-    <div class="row justify-content-md-center">
-        <table>
-            <thead>
-            <tr>
-                <th>Color</th>
-                <th>Brand</th>
-                <th>Size</th>
-                <th>Stock</th>
-            </tr>
-        </thead>
-        <tbody class="displayTable">
+                <div class="row displayTable">
 
-        </tbody>
-        </table>
-    </div>
+                </div> 
 
-        <!-- Add button -->
 
-   
+
+                <!-- <table>
+                    <thead>
+                        <tr>
+                            <th>Color</th>
+                            <th>Brand</th>
+                            <th>Size</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+
+                    </tbody>
+                </table> -->
+            </div>
+
+            <!-- Add button -->
+
+
 
 </body>
 

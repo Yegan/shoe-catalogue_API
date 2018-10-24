@@ -7,7 +7,7 @@ function ShoeCatalogues() {
                 color: 'blue',
                 brand: 'Nike',
                 size: 5,
-                stock: 4
+                stock: 4,
             },
             {
                 color: 'red',

@@ -1,3 +1,43 @@
 .select {
     padding: 5em; 
 }
+.navgation-top{
+    width: 100%;    
+    background-color: 	#404040;
+}
+
+.topNav{
+    color: white;
+}
+
+.Yegan-title{
+    background-color: #C0C0C0;
+    margin-right: 53em;
+}
+.nav-Yegan{
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 0.2em;
+    color: black;
+}
+.input-group{
+    margin: 1em;
+    width: 10em;
+}
+.button-add{
+    width: 8em;
+}
+.filter-button{
+    margin-left: -5em;
+    margin: 1em;
+    height: 3em;
+    width: 10em;
+}
+.select-shoe{
+    margin: 1em;
+}
+.displayTable{
+    margin-left: 4em;
+    margin-top: -10em;
+    width: 70%;
+}
