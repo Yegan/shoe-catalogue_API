@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const compiled = Handlebars.compile(userTemplate)
 
     // buttons
-    const displayShoeBtn = document.querySelector('.filter')
     const filterBtn = document.querySelector('.custom-select')
 
     // instance of factory function
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 
-    displayShoeBtn.addEventListener('click', showAllShoes);
+    filterBtn.addEventListener('click', showAllShoes);
 
     showAllShoes();
 
