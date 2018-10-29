@@ -20,13 +20,14 @@ id serial not null primary key,
 brand_id int not null,
 colour_id int not null,
 size_id int not null,
-
-price int not null,
+price decimal(10,2) not null,
+qty int not null,
 
 foreign key (brand_id) references brand(id),
 foreign key (colour_id) references colour(id),
 foreign key (size_id) references size(id)
 );
+
 
 
 insert into brand (shoe_brand) values('Nike');
@@ -67,10 +68,9 @@ CREATE or replace FUNCTION getSizeId(sizeSize integer) returns integer AS $$
         select id into sizeId from size where shoe_size = sizeSize;
         return sizeId;
     END;
-$$ LANGUAGE  plpgsql;       
+$$ LANGUAGE  plpgsql;     
 
-
-insert into shoe (brand_id, colour_id, size_id, price) values( getBrandId('Adidas'), getColourId('Blue'), getSizeId(7), 450);
+insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Adidas'), getColourId('Blue'), getSizeId(7), 450, 2);
 
 
 -- Database name shoe_db

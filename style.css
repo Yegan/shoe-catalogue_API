@@ -36,3 +36,18 @@
     margin-top: -10em;
     width: 70%;
 }
+.size{
+    padding-left: 0.5em;
+    background-color: #C0C0C0;
+    width: 100%;
+}
+.brand{
+    padding-top: 1em;
+    padding-left: 0.5em;
+    background-color: #C0C0C0;
+    width: 100%;
+}
+.cart{
+    width: 4em;
+    height: 3em;
+}
