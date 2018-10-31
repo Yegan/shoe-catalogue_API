@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+('DOMContentLoaded', function () {
     const userTemplate = document.querySelector('.userTemplateFancy').innerHTML
     const display = document.querySelector('.displayTable')
     const shoeBrand = document.querySelector('.brand')

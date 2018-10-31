@@ -51,14 +51,98 @@
 <body>
 
     <div class="navgation-top">
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Inventory</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                        <form>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                        <label for="Size">Size</label>
+                                        <select id="Size" class="form-control">
+                                          <option selected>Select a size</option>
+                                          <option>UK 5</option>
+                                          <option>UK 6</option>
+                                          <option>UK 7</option>
+                                          <option>UK 8</option>
+                                          <option>UK 9</option>
+                                          <option>UK 10</option>
+
+                                        </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                                <label for="Brand">Brand</label>
+                                                <select id="Brand" class="form-control">
+                                                  <option selected>Select a brand</option>
+                                                  <option>Nike</option>
+                                                  <option>Addidas</option>
+                                                  <option>Puma</option>
+                                                </select>
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                              <label for="Quantity">Quantity</label>
+                                              <select id="Quantity" class="form-control">
+                                                <option selected>Select an amount</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option> 10</option>
       
+                                              </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                                      <label for="Colour">Colour</label>
+                                                      <select id="Colour" class="form-control">
+                                                        <option selected>Select a colour</option>
+                                                        <option>Red</option>
+                                                        <option>Black</option>
+                                                        <option>Blue</option>
+                                                      </select>
+                                        </div>
+                                      </div>
+                              
+                                      <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                          <label for="Price">Price</label>
+                                                            <input type="text" id="Price">
+                                            </div>
+                                          </div>
+                              
+                               
+                              </form>
+                              
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
 
         <ul class="nav justify-content-end">
                 <div class="Yegan-title">
                         <h3 class="nav-Yegan"> Shop</h3>
                     </div>
             <li class="nav-item">
-                <a class="nav-link topNav" href="#">LOGIN</a>
+              <button class="admin-btn"data-toggle="modal" data-target="#exampleModal"><a class="nav-link topNav admin-btn" href="#">ADMIN</a></button>
             </li>
             <li class="nav-item">
                 <a class="nav-link topNav" href="#"><img src="cart.png" class="cart" alt=""/></a>
