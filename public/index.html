@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to Yegan's Shoe Shop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+    <script type='text/x-template' class='userTemplate'>
+    {{#each shoes}}
+    <tr>
+        <td>{{color}}</td>
+        <td>{{brand}}</td>
+        <td>{{size}}</td>
+        <td>{{stock}}</td>
+    </tr>
+    {{/each}}
+    </script>
+
+    <script type='text/x-template' class='userTemplateFancy'>
+    {{#each shoes}}
+    <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">{{brand}} - {{color}}</a>
+                </h4>
+                <h5>{{size}}</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">★ ★ ★ ★ ☆</small>
+              </div>
+            </div>
+          </div>
+    {{/each}}
+    </script>
+
+</head>
+
+<body>
+
+    <div class="navgation-top">
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Inventory</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                        <form>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                        <label for="Size">Size</label>
+                                        <select id="Size" class="form-control">
+                                          <option selected>Select a size</option>
+                                          <option>UK 5</option>
+                                          <option>UK 6</option>
+                                          <option>UK 7</option>
+                                          <option>UK 8</option>
+                                          <option>UK 9</option>
+                                          <option>UK 10</option>
+
+                                        </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                                <label for="Brand">Brand</label>
+                                                <select id="Brand" class="form-control">
+                                                  <option selected>Select a brand</option>
+                                                  <option>Nike</option>
+                                                  <option>Addidas</option>
+                                                  <option>Puma</option>
+                                                </select>
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                              <label for="Quantity">Quantity</label>
+                                              <select id="Quantity" class="form-control">
+                                                <option selected>Select an amount</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option> 10</option>
+      
+                                              </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                                      <label for="Colour">Colour</label>
+                                                      <select id="Colour" class="form-control">
+                                                        <option selected>Select a colour</option>
+                                                        <option>Red</option>
+                                                        <option>Black</option>
+                                                        <option>Blue</option>
+                                                      </select>
+                                        </div>
+                                      </div>
+                              
+                                      <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                          <label for="Price">Price</label>
+                                                            <input type="text" id="Price">
+                                            </div>
+                                          </div>
+                              
+                               
+                              </form>
+                              
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        <ul class="nav justify-content-end">
+                <div class="Yegan-title">
+                        <h3 class="nav-Yegan"> Shop</h3>
+                    </div>
+            <li class="nav-item">
+              <button class="admin-btn"data-toggle="modal" data-target="#exampleModal"><a class="nav-link topNav admin-btn" href="#">ADMIN</a></button>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link topNav" href="#"><img src="cart.png" class="cart" alt=""/></a>
+            </li>
+        </ul>
+
+    </div>
+ 
+
+                <div class="row justify-content-md-center input-group">
+                   
+                    <!-- <select class="custom-select brand" id="inputGroupSelect01">
+                        <option selected value="">Show all</option>
+                        <option class="brand" value="Nike">Nike</option>
+                        <option class="brand" value="Addidas">Addidas</option>
+                        <option class="brand" value="Puma">Puma</option>
+                    </select> -->
+                    <div class="size">
+                        <h3>Size:</h3>
+                        <div class="size med">
+                         <input type="checkbox" id="5">
+                        <label for="5">UK 5</label>
+
+                        <input type="checkbox" id="6">
+                        <label for="6">UK 6</label>
+                    </div>
+
+                    <div class="size large">
+                        <input type="checkbox" id="7">
+                        <label for="7">UK 7</label>
+
+                        <input type="checkbox" id="8">
+                        <label for="8">UK 8</label>
+                    </div>
+
+                    <div class="size extra-large">
+                        <input type="checkbox" id="9">
+                        <label for="9">UK 9</label>
+
+                        <input type="checkbox" id="10">
+                        <label for="10">UK 10</label>
+                    </div>
+                    </div>
+                  
+                    <div class="brand">
+                            <h3>Brand:</h3>
+                            <div class="size brand">
+                             <input type="checkbox" id="Nike">
+                            <label for="Nike">Nike</label>
+    
+                            <input type="checkbox" id="Puma">
+                            <label for="Puma">Puma</label>
+                        </div>
+    
+                        <div class="size large">
+                            <input type="checkbox" id="Addidas">
+                            <label for="Addidas">Addidas</label>
+                        </div>
+                        </div>
+
+                        <div class="brand">
+                                <h3> Colour:</h3>
+                                <div class="colour">
+                                 <input type="checkbox" id="Black">
+                                <label for="Black">Black</label>
+        
+                                <input type="checkbox" id="Blue">
+                                <label for="Blue">Blue</label>
+                            </div>
+        
+                            <div class="size large">
+                                <input type="checkbox" id="Red">
+                                <label for="Red">Red</label>
+                            </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-primary btn-block">Filter</button>
+
+                        
+
+                 </div>        
+
+                 <br>
+                 <br>
+                 <br>
+      
+
+            <div class="row justify-content-md-center"> 
+
+                <div class="row displayTable">
+
+                </div> 
+
+
+
+                <!-- <table>
+                    <thead>
+                        <tr>
+                            <th>Color</th>
+                            <th>Brand</th>
+                            <th>Size</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+
+                    </tbody>
+                </table> -->
+            </div>
+
+            <!-- Add button -->
+
+
+
+</body>
+
+<script src="shoeFactory.js"></script>
+<script src="index.js"></script>
+
+</html>
