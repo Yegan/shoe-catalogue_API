@@ -30,49 +30,50 @@ foreign key (size_id) references size(id)
 
 
 
-insert into brand (shoe_brand) values('Nike');
-insert into brand (shoe_brand) values('Adidas');
-insert into colour(shoe_colour) values('Blue');
-insert into colour(shoe_colour) values('Red');
-insert into size(shoe_size) values(7);
-insert into size(shoe_size) values(8);
+-- insert into brand (shoe_brand) values('Nike');
+-- insert into brand (shoe_brand) values('Adidas');
+-- insert into colour(shoe_colour) values('Blue');
+-- insert into colour(shoe_colour) values('Red');
+-- insert into size(shoe_size) values(7);
+-- insert into size(shoe_size) values(8);
 
 
 
 
-drop FUNCTION getBrandId(text);
+-- drop FUNCTION getBrandId(text);
 
-CREATE or replace FUNCTION getBrandId(brandName text) returns integer AS $$
-    DECLARE shoeId integer;
-    BEGIN
-        select id into shoeId from brand where shoe_brand = brandName;
-        return shoeId;
-    END;
-$$ LANGUAGE plpgsql;
+-- CREATE or replace FUNCTION getBrandId(brandName text) returns integer AS $$
+--     DECLARE shoeId integer;
+--     BEGIN
+--         select id into shoeId from brand where shoe_brand = brandName;
+--         return shoeId;
+--     END;
+-- $$ LANGUAGE plpgsql;
 
-drop FUNCTION getColourId(text);
+-- drop FUNCTION getColourId(text);
 
-CREATE or replace FUNCTION getColourId(colourName text) returns integer AS $$
-    DECLARE colourId integer;
-    BEGIN
-        select id into colourId from colour where shoe_colour = colourName;
-        return colourId;
-    END;
-$$ LANGUAGE plpgsql;
+-- CREATE or replace FUNCTION getColourId(colourName text) returns integer AS $$
+--     DECLARE colourId integer;
+--     BEGIN
+--         select id into colourId from colour where shoe_colour = colourName;
+--         return colourId;
+--     END;
+-- $$ LANGUAGE plpgsql;
 
-drop FUNCTION getSizeId(integer);
+-- drop FUNCTION getSizeId(integer);
 
-CREATE or replace FUNCTION getSizeId(sizeSize integer) returns integer AS $$
-    DECLARE sizeId integer;
-    BEGIN
-        select id into sizeId from size where shoe_size = sizeSize;
-        return sizeId;
-    END;
-$$ LANGUAGE  plpgsql;     
+-- CREATE or replace FUNCTION getSizeId(sizeSize integer) returns integer AS $$
+--     DECLARE sizeId integer;
+--     BEGIN
+--         select id into sizeId from size where shoe_size = sizeSize;
+--         return sizeId;
+--     END;
+-- $$ LANGUAGE  plpgsql;     
 
-insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Adidas'), getColourId('Blue'), getSizeId(7), 450, 2);
+-- insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Adidas'), getColourId('Blue'), getSizeId(7), 450, 2);
 
 
 -- Database name shoe_db
+
 
 
