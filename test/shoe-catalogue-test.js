@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 const assert = require('assert')
 const servicesFunc = require('../services')
 const postgres = require('pg')
@@ -71,27 +71,28 @@ describe('Waiter Web-App', function () {
 
         let shoeDBFunc = servicesFunc(pool);
 
-        let colorBlue = shoeDBFunc.addColour('Blue');
-        let nike = shoeDBFunc.addBrand('Nike');
-        let size7 = shoeDBFunc.addSize(7);
+        let colorBlue = await shoeDBFunc.addColour('Blue');
+        let nike = await shoeDBFunc.addBrand('Nike');
+
+        let size7 = await shoeDBFunc.addSize(7);
 
 
          let shoeDisplay =  await shoeDBFunc.addShoe({
-             colour_id: colorBlue.id,
-             brand_id: nike.id,
-             size_id: size7.id,
+             colour_id: colorBlue[0].id,
+             brand_id: nike[0].id,
+             size_id: size7[0].id,
              price: 750,
              qty: 7
          });
-
-         let shoe = {
-            colour_id: 'Blue',
-            brand_id: 'Nike',
-            size_id: 7,
+         
+         let shoe = [{
+             id:shoeDisplay[0].id,
+            colour_id: colorBlue[0].id,
+            brand_id: nike[0].id,
+            size_id: size7[0].id,
             price: 750,
             qty: 7
-            
-         }
+        }]
 
         assert.deepEqual(shoeDisplay, shoe)
 

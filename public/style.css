@@ -3,21 +3,33 @@
 }
 .navgation-top{
     width: 100%;    
-    background-color: 	#404040;
+    background-color: #E0E0E0;
+    height: 65px;
+    justify-content: center;
 }
+.admin-bar{
+    width: 100%;
+}
+
+
+.nav-bar-links{
+    justify-content: center;
+}
+
 
 .topNav{
     color: white;
 }
 
 .Yegan-title{
-    background-color: #C0C0C0;
-    margin-right: 53em;
+    font-family: sans-serif;
+    padding-top: 10px;
+    width: 100%;
+    justify-content: center;  
+    height: 70px;
 }
 .nav-Yegan{
-    margin-left: 1em;
-    margin-right: 1em;
-    padding: 0.2em;
+    font-weight: 600;
     color: black;
 }
 .input-group{
@@ -50,7 +62,4 @@
 .cart{
     width: 4em;
     height: 3em;
-}
-.admin-btn{
-    color: black;
 }
