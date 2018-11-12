@@ -3,8 +3,8 @@
 }
 .navgation-top{
     width: 100%;    
-    background-color: #E0E0E0;
-    height: 65px;
+    background-color: #ff6f69;
+    height: 55px;
     justify-content: center;
 }
 .admin-bar{
@@ -12,16 +12,17 @@
 }
 
 
-.nav-bar-links{
-    justify-content: center;
-}
+
 
 
 .topNav{
-    color: white;
+    font-size: 20px;
+    color: black;
+    font-family: sans-serif;
 }
 
 .Yegan-title{
+    background-color: #ff6f69;
     font-family: sans-serif;
     padding-top: 10px;
     width: 100%;

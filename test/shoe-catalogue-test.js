@@ -1,6 +1,6 @@
 'use strict'
 const assert = require('assert')
-const servicesFunc = require('../services')
+const servicesFunc = require('../Services/services')
 const postgres = require('pg')
 const Pool = postgres.Pool
 
@@ -97,6 +97,31 @@ describe('Waiter Web-App', function () {
         assert.deepEqual(shoeDisplay, shoe)
 
     });
+
+    it('', async function () {
+
+        let shoeDBFunc = servicesFunc(pool);
+
+        let colorBlue = await shoeDBFunc.addColour('Blue');
+        let nike = await shoeDBFunc.addBrand('Nike');
+
+        let size7 = await shoeDBFunc.addSize(7);
+
+
+         let shoeDisplay =  await shoeDBFunc.addShoe({
+             colour_id: colorBlue[0].id,
+             brand_id: nike[0].id,
+             size_id: size7[0].id,
+             price: 750,
+             qty: 7
+         });
+         
+       let listOfShoes = await shoeDBFunc.getShoes()
+
+        assert.deepEqual(shoeDisplay, listOfShoes)
+
+    });
+   
    
 
 

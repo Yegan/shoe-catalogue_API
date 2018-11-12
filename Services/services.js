@@ -88,13 +88,22 @@ module.exports = function (pool) {
        
     }
 
+    async function getShoes(){
+    
+        let result = await pool.query(`select * from shoe`)
+        console.log(result.rows)
+        return result.rows
+
+    }
+
 
 
     return {
         addBrand,
         addColour,
         addSize,
-        addShoe
+        addShoe,
+        getShoes
 
     }
 

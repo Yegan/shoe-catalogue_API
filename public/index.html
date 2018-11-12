@@ -14,33 +14,27 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src = 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'></script>
 
-    <script type='text/x-template' class='userTemplate'>
-    {{#each shoes}}
-    <tr>
-        <td>{{color}}</td>
-        <td>{{brand}}</td>
-        <td>{{size}}</td>
-        <td>{{stock}}</td>
-    </tr>
-    {{/each}}
-    </script>
+   
 
     <script type='text/x-template' class='userTemplateFancy'>
-    {{#each shoes}}
+    {{#each shoeData}}
     <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">{{brand}} - {{color}}</a>
+                  <a href="#">{{brand_id}}brand  {{colour_id}}colour</a>
                 </h4>
-                <h5>{{size}}</h5>
+                <h5>{{size_id}} size</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
               </div>
               <div class="card-footer">
+                  <p>{{qty}}</p>
                 <small class="text-muted">★ ★ ★ ★ ☆</small>
               </div>
+              <h5>{{price}}</h5>
             </div>
           </div>
     {{/each}}
@@ -60,7 +54,7 @@
         <ul class="nav">       
             
                 <li class="nav-item">
-                    <a class="nav-link topNav admin-btn" href="#">Admin</a>
+                    <a class="nav-link topNav Admin" href="#">Admin</a>
                       </li>
             <li class="nav-item">
                 <a class="nav-link topNav cart" href="#"> Cart</a>
@@ -75,7 +69,7 @@
         </ul>
     </div>
  
-
+    
                 <div class="row justify-content-md-center input-group">
                    
                     <div class="size">
@@ -143,11 +137,6 @@
 
                  </div>        
 
-                 <br>
-                 <br>
-                 <br>
-      
-
             <div class="row justify-content-md-center"> 
 
                 <div class="row displayTable">
@@ -155,13 +144,14 @@
                 </div> 
 
             </div>
+      
+
 
 
 
 
 </body>
 
-<script src="shoeFactory.js"></script>
-<script src="index.js"></script>
+<script src="domFunc.js"></script>
 
 </html>
