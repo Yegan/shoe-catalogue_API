@@ -12,8 +12,6 @@
 }
 
 
-
-
 .topNav{
     font-size: 20px;
     color: black;
@@ -38,4 +36,13 @@
 .displayTable{
     margin-top: 1em;
     width: 100%;
+
+}
+
+/*------------------------------ Admin page styling below            --------------------------------------------------        */
+.background-form{
+    width: 100%;
+    background-color:  rgba(128, 128, 128, 0.53);
+    justify-content: center;  
+
 }
