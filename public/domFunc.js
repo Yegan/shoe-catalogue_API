@@ -51,8 +51,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     homeButton.addEventListener('click', function(){
         admin.style.display = "none";
-        display.style.display = ""
+        showShoes();
+        display.style.display = "";
+
     })
+    
 
     //Add a shoe to stock
 
