@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     adminButton.addEventListener('click', function(){
 
-        showAdmin = true
+        //showAdmin = true
 
-        if(showAdmin) {
+        //if(showAdmin) {
             admin.style.display = "block"
             display.style.display = "none"
 
-        }
+        //}
 
 
     })
