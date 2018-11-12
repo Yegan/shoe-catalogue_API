@@ -88,6 +88,20 @@ module.exports = function (pool) {
        
     }
 
+    async function getBrand() {
+        let result = await pool.query(`select shoe.id, shoe_brand, shoe_colour, shoe_size, price, qty
+        from shoe
+        join brand
+        on brand.id = shoe.brand_id
+        join colour
+        on colour.id = shoe.colour_id
+        join size
+        on size.id = shoe.size_id`);
+
+        return result.rows;
+    }
+
+
     async function getShoes(){
     
         let result = await pool.query(`select * from shoe`)
@@ -103,7 +117,8 @@ module.exports = function (pool) {
         addColour,
         addSize,
         addShoe,
-        getShoes
+        getShoes,
+        getBrand
 
     }
 

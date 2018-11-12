@@ -2,7 +2,7 @@ module.exports = function (shoeService){
 
     async function all(req,res){
         try{
-            let results = await shoeService.getShoes()
+            let results = await shoeService.getBrand()
             res.json({
                 status:'success',
                 data: results
