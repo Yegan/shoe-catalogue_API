@@ -7,15 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const compiled = Handlebars.compile(userTemplate)
     const display = document.querySelector('.displayTable')
 
+   
+    //Add a Shoe / Admin
 
+    const addBrand = document.querySelector('.Brand')
+    const addSize = document.querySelector('.Size')
+    const addColour = document.querySelector('.Colour')
+    const addPrice = document.querySelector('.Price')
+    const addQTY = document.querySelector('.QTY')
 
-    // buttons
+    const addStockBtn = document.querySelector('.addStockButton') 
 
-    let showRegistration = false
-
-    let showBasket = false
-
-   // let showShoes = false
 
 
     function showShoes (){
@@ -30,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     showShoes()
 
+    //Render Admin Page
+
     adminButton.addEventListener('click', function(){
 
         //showAdmin = true
@@ -43,9 +47,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
     })
 
+    //Render Home Page
+
     homeButton.addEventListener('click', function(){
         admin.style.display = "none";
         display.style.display = ""
+    })
+
+    //Add a shoe to stock
+
+    addStockBtn.addEventListener('click', function() {
+
+        let shoeData = {
+            brand: addBrand.value,
+            colour: addColour.value,
+            size: Number(addSize.value),
+            price: Number(addPrice.value),
+            qty: Number(addQTY.value)
+
+        }
+
+        console.log(shoeData)
+
+        axios.post('/api/addshoe', shoeData)
+        .then(function(result){
+            alert(result.data.status)
+           
+
+        })
+
+        admin.style.display = "none";
+        display.style.display = ""
+        showShoes()
+
+
     })
 
 

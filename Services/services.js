@@ -75,10 +75,17 @@ module.exports = function (pool) {
             qty:shoeData.qty,
             price:shoeData.price
         }    
+        console.log('-----data-----')
+        console.log(data)
+        console.log('----------')
+
         // just do an insert
-        await pool.query(`insert into shoe(brand_id,colour_id,size_id,qty,price) values($1, $2, $3, $4, $5)`,[data.size, data.brand,data.colour,data.qty,data.price])
+        await pool.query(`insert into shoe(brand_id,colour_id,size_id,qty,price) values($1, $2, $3, $4, $5)`,[data.brand, data.colour,data.size,data.qty,data.price])
 
         let result = await pool.query('select * from shoe ')
+        console.log('-----result-----')
+        console.log(result.rows)
+        console.log('----------')
         return result.rows
        }
 
