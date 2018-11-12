@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    let adminButton =document.querySelector('.Admin')
+
     //Shoe table tempelate
     const userTemplate = document.querySelector('.userTemplateFancy').innerHTML
     const compiled = Handlebars.compile(userTemplate)
@@ -9,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // buttons
 
+    let showRegistration = false
+
+    let showBasket = false
+
+   // let showShoes = false
 
 
     function showShoes (){
@@ -23,9 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     showShoes()
 
-    // document.addEventListener('load', function(){
+    adminButton.addEventListener('click', function(){
 
-    // })
+        showAdmin = true
+
+        if(showAdmin) {
+            admin.style.display = "block"
+            display.style.display = "none"
+
+        }
+
+
+    })
 
     // function showAllShoes() {
     //     shoeFunc
