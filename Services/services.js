@@ -75,17 +75,11 @@ module.exports = function (pool) {
             qty:shoeData.qty,
             price:shoeData.price
         }    
-        console.log('-----data-----')
-        console.log(data)
-        console.log('----------')
 
         // just do an insert
         await pool.query(`insert into shoe(brand_id,colour_id,size_id,qty,price) values($1, $2, $3, $4, $5)`,[data.brand, data.colour,data.size,data.qty,data.price])
 
         let result = await pool.query('select * from shoe ')
-        console.log('-----result-----')
-        console.log(result.rows)
-        console.log('----------')
         return result.rows
        }
 
@@ -104,7 +98,6 @@ module.exports = function (pool) {
         on colour.id = shoe.colour_id
         join size
         on size.id = shoe.size_id`);
-
         return result.rows;
     }
 
@@ -112,8 +105,37 @@ module.exports = function (pool) {
     async function getShoes(){
     
         let result = await pool.query(`select * from shoe`)
-        console.log(result.rows)
         return result.rows
+
+    }
+
+
+
+    async function addToCart(shoeId){
+        
+  
+   let shoe = await pool.query('select * from cart where shoe_id = $1 ', [shoeId])
+
+   if(shoe.rowCount == 0){
+       await pool.query('insert into cart (shoe_id, qty) values($1, $2)', [shoeId,1])
+       await pool.query('update shoe  set qty = qty-1 where id = $1',[shoeId])
+
+   }
+    if(shoe.rowCount == 1){
+     await pool.query('update shoe  set qty = qty-1 where id = $1',[shoeId])
+     await pool.query('update cart  set qty =qty+1 where id = $1',[shoeId])
+   }
+
+//    let cart = await pool.query('select * from cart')
+
+   let cart = await pool.query('select * from cart')
+   return cart.rows
+
+    }
+
+    async function getCart(){
+    let result = await pool.query('select * from cart')
+    return result.rows
 
     }
 
@@ -125,7 +147,9 @@ module.exports = function (pool) {
         addSize,
         addShoe,
         getShoes,
-        getBrand
+        getBrand,
+        addToCart,
+        getCart
 
     }
 

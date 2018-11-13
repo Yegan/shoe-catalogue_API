@@ -13,8 +13,8 @@ const pool = new Pool({
 
 describe('Waiter Web-App', function () {
     beforeEach(async function () {
+        await pool.query('delete from cart')
         await pool.query('delete from shoe')
-
         await pool.query('delete from brand')
         await pool.query('delete from colour')
         await pool.query('delete from size')
@@ -98,32 +98,67 @@ describe('Waiter Web-App', function () {
 
     });
 
-    it('', async function () {
+    it('Should update the quantity of the cart in the cart table', async function () {
 
         let shoeDBFunc = servicesFunc(pool);
 
+        
         let colorBlue = await shoeDBFunc.addColour('Blue');
         let nike = await shoeDBFunc.addBrand('Nike');
 
         let size7 = await shoeDBFunc.addSize(7);
 
 
-         let shoeDisplay =  await shoeDBFunc.addShoe({
+         await shoeDBFunc.addShoe({
              colour_id: colorBlue[0].id,
              brand_id: nike[0].id,
              size_id: size7[0].id,
              price: 750,
              qty: 7
          });
+      
          
-       let listOfShoes = await shoeDBFunc.getShoes()
+        let getShoe = await shoeDBFunc.getShoes()
 
-        assert.deepEqual(shoeDisplay, listOfShoes)
+        let boughtShoe = await shoeDBFunc.addToCart(getShoe[0].id)
+
+        let cartDisplay = await shoeDBFunc.getCart()
+
+       assert.deepEqual(cartDisplay, boughtShoe)
 
     });
-   
-   
 
+    it('Should update the quantity of the shoe in the shoe table and the quantity of the cart', async function () {
+
+        let shoeDBFunc = servicesFunc(pool);
+
+        
+        let colorBlue = await shoeDBFunc.addColour('Blue');
+        let nike = await shoeDBFunc.addBrand('Nike');
+
+        let size7 = await shoeDBFunc.addSize(7);
+
+
+        let shoe =  await shoeDBFunc.addShoe({
+             colour_id: colorBlue[0].id,
+             brand_id: nike[0].id,
+             size_id: size7[0].id,
+             price: 750,
+             qty: 6
+         });
+      
+         
+        let getShoe = await shoeDBFunc.getShoes()
+
+         await shoeDBFunc.addToCart(getShoe[0].id)
+
+
+      assert.deepEqual(shoe, getShoe)
+
+    });
+
+    
+   
 
     after(async function () {
         await pool.end()

@@ -1,4 +1,4 @@
-drop table if exists brand, colour, size, shoe cascade;
+drop table if exists brand, colour, size, shoe, cart cascade;
 
 create table brand(
 id serial not null primary key,
@@ -29,13 +29,21 @@ foreign key (size_id) references size(id)
 );
 
 
+create table cart(
+id serial not null primary key,
+shoe_id int not null,
+qty int not null,
+foreign key (shoe_id) references shoe(id)
+);
 
-insert into brand (shoe_brand) values('Nike');
-insert into brand (shoe_brand) values('Addidas');
-insert into colour(shoe_colour) values('Blue');
-insert into colour(shoe_colour) values('Red');
-insert into size(shoe_size) values(7);
-insert into size(shoe_size) values(8);
+
+
+-- insert into brand (shoe_brand) values('Nike');
+-- insert into brand (shoe_brand) values('Addidas');
+-- insert into colour(shoe_colour) values('Blue');
+-- insert into colour(shoe_colour) values('Red');
+-- insert into size(shoe_size) values(7);
+-- insert into size(shoe_size) values(8);
 
 
 
@@ -70,10 +78,10 @@ insert into size(shoe_size) values(8);
 --     END;
 -- $$ LANGUAGE  plpgsql;     
 
-insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Addidas'), getColourId('Blue'), getSizeId(7), 450, 2);
-insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Nike'), getColourId('Blue'), getSizeId(8), 750, 6);
-insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Addidas'), getColourId('Red'), getSizeId(7), 950, 9);
-insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Nike'), getColourId('Red'), getSizeId(7), 1050, 9);
+-- insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Addidas'), getColourId('Blue'), getSizeId(7), 450, 2);
+-- insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Nike'), getColourId('Blue'), getSizeId(8), 750, 6);
+-- insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Addidas'), getColourId('Red'), getSizeId(7), 950, 9);
+-- insert into shoe (brand_id, colour_id, size_id, price, qty) values( getBrandId('Nike'), getColourId('Red'), getSizeId(7), 1050, 9);
 
 
 -- Database name shoe_db

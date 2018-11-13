@@ -33,6 +33,7 @@
               <div class="card-footer">
                   <p>Available in stock:{{qty}}</p>
                 <small class="text-muted">★ ★ ★ ★ ☆</small>
+                <button class="btn btn-success" value = "{{id}}">BUY</button>
                 <h5>R{{price}}</h5>
               </div>
              
@@ -62,7 +63,7 @@
                     <a class="nav-link topNav Admin"  href="#">Admin</a>
                       </li>
             <li class="nav-item">
-                <a class="nav-link topNav cart" href="#"> Cart</a>
+                <a class="nav-link topNav cartButton" href="#"> Cart</a>
             </li>
             <li class="nav-item">
                     <a class="nav-link topNav login" href="#"> Login</a>
@@ -119,6 +120,13 @@
                             <button type="button" class="btn btn-primary addStockButton">Add to stock</button>
                           <!-- </form> -->
     
+            </div>
+
+            <div style = "display:none;" class="cart">
+
+              <h1>Welcome to the cart</h1>
+
+
             </div>
 
 

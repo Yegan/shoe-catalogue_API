@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const addStockBtn = document.querySelector('.addStockButton') 
 
+    // cart selectors
+    const cartDisplay = document.querySelector('.cart')
 
+    const cartBtn = document.querySelector('.cartButton')
+    
 
     function showShoes (){
 
@@ -40,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //if(showAdmin) {
             admin.style.display = "block"
+            cartDisplay.style.display = "none"
             display.style.display = "none"
 
         //}
@@ -53,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
         admin.style.display = "none";
         showShoes();
         display.style.display = "";
+        cartDisplay.style.display="none"
+    
 
     })
     
@@ -78,48 +85,29 @@ document.addEventListener('DOMContentLoaded', function () {
            
 
         })
-
+        cartDisplay.style.display="none";
         admin.style.display = "none";
         display.style.display = ""
+
         showShoes()
 
 
     })
+    
+    // Render cart page
+    
+    cartBtn.addEventListener('click', function(){
+        cartDisplay.style.display = "block";
+        admin.style.display = "none";
+        display.style.display= "none";
 
+    })
 
+    addToCartButton.addEventListener('click', function(){
 
-    // function showAllShoes() {
-    //     shoeFunc
-    //         .getShoes()
-    //         .then(showShoes)
-    //         .catch(function(err) {
-    //             alert(err);
-    //         });
-        
-        
-    // }
-
-//     filterBtn.addEventListener('click', showAllShoes);
-
-//    // showAllShoes();
-
-//     //filter shoes button
-//     filterBtn.addEventListener('click', function () {
-//         let brandOfShoe = shoeBrand.value
-
-//         if (brandOfShoe === '') {
-//             return showAllShoes()
-//         }
-
-
-//         shoeFunc
-//             .filterShoes(brandOfShoe)
-//             .then(showShoes)
-//             .catch(function(err){
-//                 alert(err)
-//             })
-
-//     })
+        //api call to add 1 shoe to cart
+       // let addToCart = 
+    })
 
 
 });
