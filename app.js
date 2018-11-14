@@ -45,6 +45,9 @@ app.engine('handlebars', exphbs({
 
 app.get('/api',shoeServices.all)
 app.post('/api/addshoe', shoeServices.addShoeToStock)
+app.post('/api/addTocart', shoeServices.cart)
+app.get('/api/getcart', shoeServices.getCart)
+
 
 
 let PORT = process.env.PORT || 3000

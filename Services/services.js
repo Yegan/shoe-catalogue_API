@@ -103,38 +103,67 @@ module.exports = function (pool) {
 
 
     async function getShoes(){
-    
-        let result = await pool.query(`select * from shoe`)
+        let result = await pool.query(`select * from shoe ORDER BY id ASC`)
         return result.rows
 
+    }
+
+    async function checkoutCart(){
+        try{
+            let result = await pool.query(`select shoe.id, shoe_brand, shoe_colour, shoe_size, price,cart.qty
+            from shoe
+            join brand
+            on brand.id = shoe.brand_id
+            join colour
+            on colour.id = shoe.colour_id
+            join size
+            on size.id = shoe.size_id 
+            join cart 
+            on cart.shoe_id = shoe.id 
+            `)
+            return result.rows
+        }
+        catch(err){
+            console.log(err)
+        }
+
+   
     }
 
 
 
     async function addToCart(shoeId){
         
-  
-   let shoe = await pool.query('select * from cart where shoe_id = $1 ', [shoeId])
+        try{
+            let shoe = await pool.query('select * from cart where shoe_id = $1 ', [shoeId])
+         
+            if(shoe.rowCount === 0){
+                await pool.query('insert into cart (shoe_id, qty) values($1, $2)', [shoeId,1])
+                await pool.query('update shoe  set qty =(qty-1) where id= $1 AND qty>0',[shoeId])
+            
+            }
+            else if(shoe.rowCount > 0){ 
+              
+           let updateShoes =  await pool.query('update shoe set qty =(qty-1) where id = $1 AND qty >0',[shoeId])
+         
+           
+           if (updateShoes.rowCount> 0) { 
+            await pool.query('update cart  set qty =(qty+1) where shoe_id = $1',[shoeId])               
+           }
 
-   if(shoe.rowCount == 0){
-       await pool.query('insert into cart (shoe_id, qty) values($1, $2)', [shoeId,1])
-       await pool.query('update shoe  set qty = qty-1 where id = $1',[shoeId])
-
-   }
-    if(shoe.rowCount == 1){
-     await pool.query('update shoe  set qty = qty-1 where id = $1',[shoeId])
-     await pool.query('update cart  set qty =qty+1 where id = $1',[shoeId])
-   }
-
-//    let cart = await pool.query('select * from cart')
-
-   let cart = await pool.query('select * from cart')
-   return cart.rows
-
-    }
+            }
+         
+        
+         
+             }
+             catch(err){
+                 console.log(err)
+             }
+        }
+   
 
     async function getCart(){
-    let result = await pool.query('select * from cart')
+    let result = await pool.query('select * from cart ORDER BY id ASC')
     return result.rows
 
     }
@@ -149,7 +178,8 @@ module.exports = function (pool) {
         getShoes,
         getBrand,
         addToCart,
-        getCart
+        getCart,
+        checkoutCart
 
     }
 

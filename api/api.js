@@ -17,10 +17,8 @@ module.exports = function (shoeService){
     async function addShoeToStock(req,res, next){
         try {
             let shoe = req.body
-            //console.log(shoe.brand)
 
             let brandId = await shoeService.addBrand(shoe.brand)
-            console.log(brandId[0].id)
             let colorId = await shoeService.addColour(shoe.colour)
             let sizeId = await shoeService.addSize(shoe.size)
 
@@ -32,7 +30,6 @@ module.exports = function (shoeService){
                 price:shoe.price
             }
 
-            console.log(shoeData)
             await shoeService.addShoe(shoeData)
             
             res.json({
@@ -45,12 +42,45 @@ module.exports = function (shoeService){
 
     }
 
+    async function cart(req,res, next){
+        try{
+            const {shoeId} =req.body;
+            let cart = await shoeService.addToCart(shoeId)
+            // let showCart = await shoeService.checkoutCart()
+            res.json({
+                status:'success'
+            })
+
+        }
+        catch(err){
+            next(err)
+        }
+    }
+
+    async function getCart(req,res, next){
+        try{
+
+            let showCart = await shoeService.checkoutCart() 
+            
+            res.json({
+                status:'success',
+                data:showCart
+            })
+
+        }
+        catch(err){
+            next(err)
+        }
+    }
+
 
 
 
 return{
     all, 
-    addShoeToStock
+    addShoeToStock,
+    cart,
+    getCart
 }
 
 

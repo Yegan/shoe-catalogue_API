@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-
     let adminButton =document.querySelector('.Admin')
     let homeButton = document.querySelector('.Home')
     //Shoe table tempelate
@@ -7,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const compiled = Handlebars.compile(userTemplate)
     const display = document.querySelector('.displayTable')
 
-   
     //Add a Shoe / Admin
 
     const addBrand = document.querySelector('.Brand')
@@ -18,14 +15,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const addStockBtn = document.querySelector('.addStockButton') 
 
-    // cart selectors
+    // cart template 
+    const cartTemplate = document.querySelector('.cartTable').innerHTML
+    const compiledCart = Handlebars.compile(cartTemplate)
     const cartDisplay = document.querySelector('.cart')
+
+    // cart selectors
+    // const cartDisplay = document.querySelector('.cart')
 
     const cartBtn = document.querySelector('.cartButton')
     
+    
 
     function showShoes (){
-
         axios.get('/api')
         .then(function(results){
             let shoeData = results.data.data
@@ -40,16 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     adminButton.addEventListener('click', function(){
 
-        //showAdmin = true
-
-        //if(showAdmin) {
             admin.style.display = "block"
             cartDisplay.style.display = "none"
             display.style.display = "none"
-
-        //}
-
-
     })
 
     //Render Home Page
@@ -67,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
     //Add a shoe to stock
 
     addStockBtn.addEventListener('click', function() {
-
         let shoeData = {
             brand: addBrand.value,
             colour: addColour.value,
@@ -77,21 +71,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-        console.log(shoeData)
 
         axios.post('/api/addshoe', shoeData)
         .then(function(result){
-            alert(result.data.status)
-           
-
+            showShoes()
         })
         cartDisplay.style.display="none";
         admin.style.display = "none";
         display.style.display = ""
-
-        showShoes()
-
-
     })
     
     // Render cart page
@@ -100,14 +87,24 @@ document.addEventListener('DOMContentLoaded', function () {
         cartDisplay.style.display = "block";
         admin.style.display = "none";
         display.style.display= "none";
+        viewCart()
+        })
+
+
+function viewCart () {
+    axios.get('/api/getcart').then(function(result){
+        let cartData = result.data.data
+        cartDisplay.innerHTML = compiledCart({cartData})
 
     })
+}
 
-    addToCartButton.addEventListener('click', function(){
-
-        //api call to add 1 shoe to cart
-       // let addToCart = 
+function onShoe(value){
+   let shoeId = value.id;
+    axios.post('api/addTocart',{shoeId})
+    .then(function(result){
+        showShoes() 
+        viewCart()
     })
-
-
-});
+ 
+}

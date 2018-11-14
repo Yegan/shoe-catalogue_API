@@ -2,23 +2,23 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Welcome to Yegan's Shoe Shop</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src = 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'></script>
+  <meta charset="utf-8">
+  <title>Welcome to Yegan's Shoe Shop</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'></script>
 
-   
 
-    <script type='text/x-template' class='userTemplateFancy'>
+
+  <script type='text/x-template' class='userTemplateFancy'>
     {{#each shoeData}}
     <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -33,7 +33,7 @@
               <div class="card-footer">
                   <p>Available in stock:{{qty}}</p>
                 <small class="text-muted">★ ★ ★ ★ ☆</small>
-                <button class="btn btn-success" value = "{{id}}">BUY</button>
+                <a class="btn btn-success buyBtn"  id="{{id}}" onclick="onShoe(this)">BUY</a>
                 <h5>R{{price}}</h5>
               </div>
              
@@ -41,96 +41,119 @@
           </div>
     {{/each}}
     </script>
+    
+<script type ='text/x-template' class="cartTable">
+    <div class="row justify-content-md-center">
+      <div class="col-12-md input">
+          <table class="table">
+              <thead class="thead-dark">
+               <tr>
+                 <th>Your shopping items</th>
+               </tr>
+               <tr>
+                 {{#each cartData}}
+                 <td>{{shoe_brand}}</td>
+                 <td>{{shoe_colour}}</td>
+                 <td>{{shoe_size}}</td>
+                 <td>{{price}}</td>
+                 <td>{{qty}}</td>
+
+               </tr>
+               {{/each}}
+          </table>
+      </div>
+  </div>
+</script>
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="Yegan-title row">
-                <h3 class="nav-Yegan"> Yegan's Shop</h3>
-                </div>
+  <div class="container">
+    <div class="Yegan-title row">
+      <h3 class="nav-Yegan"> Yegan's Shop</h3>
+    </div>
 
     <div class="navgation-top row">
 
 
 
-        <ul class="nav">  
-                <li class="nav-item">
-                        <a class="nav-link topNav Home"  href="#">Home</a>
-                          </li>     
-            
-                <li class="nav-item">
-                    <a class="nav-link topNav Admin"  href="#">Admin</a>
-                      </li>
-            <li class="nav-item">
-                <a class="nav-link topNav cartButton" href="#"> Cart</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link topNav login" href="#"> Login</a>
-                </li>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link topNav Home" href="#">Home</a>
+        </li>
 
-                <li class="nav-item">
-                        <a class="nav-link topNav admin-btn" href="#">Sign up</a>
-                          </li>
-        </ul>
+        <li class="nav-item">
+          <a class="nav-link topNav Admin" href="#">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link topNav cartButton" href="#"> Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link topNav login" href="#"> Login</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link topNav admin-btn" href="#">Sign up</a>
+        </li>
+      </ul>
     </div>
- 
-    
-
-            <div class="row"> 
-
-                <div class="row displayTable">
-
-                </div> 
-
-            </div>
-      
 
 
-            <div style = "display:none;" class="row background-form" id="admin">
 
-                    <!-- <form method="POST" > -->
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="Brand">Brand</label>
-                                <input type="text" class="form-control Brand" id="Brand" value="" placeholder="Brand">
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="Colour">Colour</label>
-                                <input type="text" class="form-control Colour" id="Colour" value="" placeholder="Colour">
-                              </div>
-                            </div>
-                            <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                      <label for="Size">Size</label>
-                                      <input type="number" class="form-control Size" id="Size" value="" placeholder="Size">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="Price">Price</label>
-                                      <input type="number" class="form-control Price" id="Price" value="" placeholder="Price">
-                                    </div>
-                                  </div>
-    
-                                  <div class="row form-group col-md-6">
-                                        <label for="QTY">QTY</label>
-                                        <input type="number" class="form-control QTY " id="QTY" value="" placeholder="QTY">
-                                      </div>
-                           
-                           
-                            <button type="button" class="btn btn-primary addStockButton">Add to stock</button>
-                          <!-- </form> -->
-    
-            </div>
+    <div class="row">
 
-            <div style = "display:none;" class="cart">
+      <div class="row displayTable">
 
-              <h1>Welcome to the cart</h1>
+      </div>
+
+    </div>
 
 
-            </div>
 
+    <div style="display:none;" class="row background-form" id="admin">
 
+      <!-- <form method="POST" > -->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Brand">Brand</label>
+          <input type="text" class="form-control Brand" id="Brand" value="" placeholder="Brand">
         </div>
+        <div class="form-group col-md-6">
+          <label for="Colour">Colour</label>
+          <input type="text" class="form-control Colour" id="Colour" value="" placeholder="Colour">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Size">Size</label>
+          <input type="number" class="form-control Size" id="Size" value="" placeholder="Size">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Price">Price</label>
+          <input type="number" class="form-control Price" id="Price" value="" placeholder="Price">
+        </div>
+      </div>
+
+      <div class="row form-group col-md-6">
+        <label for="QTY">QTY</label>
+        <input type="number" class="form-control QTY " id="QTY" value="" placeholder="QTY">
+      </div>
+
+
+      <button type="button" class="btn btn-primary addStockButton">Add to stock</button>
+      <!-- </form> -->
+
+    </div>
+
+    <div style="display:none;" class="cart">
+
+      <h1>Welcome to the cart</h1>
+
+
+    </div>
+
+
+  </div>
 
 </body>
 
