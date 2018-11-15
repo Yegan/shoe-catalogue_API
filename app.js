@@ -4,11 +4,12 @@ const flash = require('express-flash')
 const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-const services  = require('./services')
-const shoeDOMFunc = require('./public/domFunc')
-const shoeRoutes = require('./routes/routes.js')
+const services  = require('./Services/services')
+const shoeApi = require('./api/api')
 const postgres = require('pg')
 const Pool = postgres.Pool
+
+const axios = require('axios')
 
 const connectionString = process.env.DATABASE_URL || 'postgres://coder:pg123@localhost:5432/shoe_db'
 
@@ -18,7 +19,7 @@ const pool = new Pool({
 
 
 const shoeFunc = services(pool)
-const shoeServices = shoeRoutes(shoeFunc)
+const shoeServices = shoeApi(shoeFunc)
 
 // Handlebar engine allowing for templating of data
 
@@ -42,7 +43,11 @@ app.engine('handlebars', exphbs({
   }))
 
 
-app.get('',shoeServices.home)
+app.get('/api',shoeServices.all)
+app.post('/api/addshoe', shoeServices.addShoeToStock)
+app.post('/api/addTocart', shoeServices.cart)
+app.get('/api/getcart', shoeServices.getCart)
+
 
 
 let PORT = process.env.PORT || 3000

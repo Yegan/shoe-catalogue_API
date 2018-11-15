@@ -21,6 +21,7 @@
     "url": "https://github.com/Yegan/shoe-catalogue_API/issues"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "express-flash": "0.0.2",

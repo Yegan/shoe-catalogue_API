@@ -3,54 +3,46 @@
 }
 .navgation-top{
     width: 100%;    
-    background-color: 	#404040;
+    background-color: #ff6f69;
+    height: 55px;
+    justify-content: center;
+}
+.admin-bar{
+    width: 100%;
 }
 
+
 .topNav{
-    color: white;
+    font-size: 20px;
+    color: black;
+    font-family: sans-serif;
 }
 
 .Yegan-title{
-    background-color: #C0C0C0;
-    margin-right: 53em;
+    background-color: #ff6f69;
+    font-family: sans-serif;
+    padding-top: 10px;
+    width: 100%;
+    justify-content: center;  
+    height: 70px;
 }
 .nav-Yegan{
-    margin-left: 1em;
-    margin-right: 1em;
-    padding: 0.2em;
+    font-weight: 600;
     color: black;
-}
-.input-group{
-    margin: 1em;
-    width: 10em;
-}
-.button-add{
-    width: 8em;
 }
 
-.select-shoe{
-    margin: 1em;
-}
+
+
 .displayTable{
-    margin-left: 4em;
-    margin-top: -10em;
-    width: 70%;
-}
-.size{
-    padding-left: 0.5em;
-    background-color: #C0C0C0;
+    margin-top: 1em;
     width: 100%;
+
 }
-.brand{
-    padding-top: 1em;
-    padding-left: 0.5em;
-    background-color: #C0C0C0;
+
+/*------------------------------ Admin page styling below            --------------------------------------------------        */
+.background-form{
     width: 100%;
-}
-.cart{
-    width: 4em;
-    height: 3em;
-}
-.admin-btn{
-    color: black;
+    background-color:  rgba(128, 128, 128, 0.53);
+    justify-content: center;  
+
 }
