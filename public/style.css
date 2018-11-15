@@ -11,6 +11,10 @@
     width: 100%;
 }
 
+.buyBtn{
+text-decoration-color: antiquewhite;
+}
+
 
 .topNav{
     font-size: 20px;
@@ -29,6 +33,13 @@
 .nav-Yegan{
     font-weight: 600;
     color: black;
+}
+
+.footer{
+    width: 100%;
+    background-color: #ff6f69;
+    font-family: sans-serif;
+
 }
 
 
