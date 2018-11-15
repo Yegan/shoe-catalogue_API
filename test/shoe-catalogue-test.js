@@ -109,7 +109,7 @@ describe('Waiter Web-App', function () {
         let size7 = await shoeDBFunc.addSize(7);
 
 
-         await shoeDBFunc.addShoe({
+      await shoeDBFunc.addShoe({
              colour_id: colorBlue[0].id,
              brand_id: nike[0].id,
              size_id: size7[0].id,
@@ -117,14 +117,14 @@ describe('Waiter Web-App', function () {
              qty: 7
          });
       
-         
+        let shoe = await shoeDBFunc.checkoutCart() 
         let getShoe = await shoeDBFunc.getShoes()
 
-        let boughtShoe = await shoeDBFunc.addToCart(getShoe[0].id)
+        await shoeDBFunc.addToCart(getShoe[0].id)
 
         let cartDisplay = await shoeDBFunc.getCart()
 
-       assert.deepEqual(cartDisplay, boughtShoe)
+       assert.deepEqual(cartDisplay, shoe)
 
     });
 
