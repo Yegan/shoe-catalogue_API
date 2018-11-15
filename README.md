@@ -1,3 +1,3 @@
 Welcome to Yegan Shoe catalogue API:
 
-https://travis-ci.org/Yegan/shoe-catalogue_API.svg?branch=master
+[![Build Status](https://travis-ci.org/Yegan/shoe-catalogue_API.svg?branch=master)](https://travis-ci.org/Yegan/shoe-catalogue_API)
