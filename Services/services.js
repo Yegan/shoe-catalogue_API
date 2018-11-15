@@ -77,6 +77,7 @@ module.exports = function (pool) {
         }    
 
         // just do an insert
+
         await pool.query(`insert into shoe(brand_id,colour_id,size_id,qty,price) values($1, $2, $3, $4, $5)`,[data.brand, data.colour,data.size,data.qty,data.price])
 
         let result = await pool.query('select * from shoe ')
@@ -85,8 +86,28 @@ module.exports = function (pool) {
 
        catch(error){
        }
+ 
+    }
 
-       
+    async function checkShoe(shoe){
+        console.log(shoe)
+        let wholeShoe = await pool.query('select * from shoe where brand_id =$1 and colour_id =$2 and size_id=$3', [shoe.brand, shoe.colour, shoe.size])
+        
+        let check = wholeShoe.rows
+        console.log(check)
+        if(check.length === 1){
+            let totalStock = shoe.qty + check[0].qty
+            console.log("---------------------")
+            await pool.query('update shoe set qty = $1, price = $2 ', [totalStock, shoe.price])
+        }
+
+        else{
+         addShoe(shoe)
+         console.log('here-----------------------')
+        }
+
+        
+
     }
 
     async function getBrand() {
@@ -128,6 +149,19 @@ module.exports = function (pool) {
         }
 
    
+    }
+
+    async function totalPrice(){
+    
+        let total = 0;        
+        let price = await checkoutCart()
+
+        for (let i = 0; i < price.length; i++) {
+           let totalPrice = price[i].price * price[i].qty
+            total = totalPrice + total;    
+        }
+
+        return total;
     }
 
 
@@ -179,7 +213,9 @@ module.exports = function (pool) {
         getBrand,
         addToCart,
         getCart,
-        checkoutCart
+        checkoutCart,
+        totalPrice,
+        checkShoe
 
     }
 

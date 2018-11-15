@@ -10,9 +10,29 @@
 .admin-bar{
     width: 100%;
 }
+body{
+height: 100%;
+width: 100%;
+}
+.home-img{
+height: 24px;
+}
 
-.buyBtn{
-text-decoration-color: antiquewhite;
+.add-img{
+    height: 20px;
+}
+.cancel-img{
+    height: 20px;
+}
+
+.icon-cart{
+    height: 20px;
+}
+.price{
+    padding-left: 10em;  
+}
+.checkoutBTN{
+    margin-left: 19em;
 }
 
 

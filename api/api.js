@@ -30,7 +30,7 @@ module.exports = function (shoeService){
                 price:shoe.price
             }
 
-            await shoeService.addShoe(shoeData)
+            await shoeService.checkShoe(shoeData)
             
             res.json({
                 status: 'success'
@@ -61,10 +61,11 @@ module.exports = function (shoeService){
         try{
 
             let showCart = await shoeService.checkoutCart() 
-            
+            let totalPrice = await shoeService.totalPrice()
             res.json({
                 status:'success',
-                data:showCart
+                data:showCart,
+                price: totalPrice
             })
 
         }

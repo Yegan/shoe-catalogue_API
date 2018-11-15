@@ -33,7 +33,7 @@
               <div class="card-footer">
                   <p>Available in stock:{{qty}}</p>
                 <small class="text-muted">★ ★ ★ ★ ☆</small>
-                <button class="btn btn-success buyBtn"  id="{{id}}" onclick="onShoe(this)">BUY</button>
+                <button class="btn btn-success buyBtn"  id="{{id}}" onclick="onShoe(this)">CHECKOUT</button>
                 <h5>R{{price}}</h5>
               </div>
              
@@ -55,13 +55,19 @@
                  <td>{{shoe_brand}}</td>
                  <td>{{shoe_colour}}</td>
                  <td>{{shoe_size}}</td>
-                 <td>{{price}}</td>
+                 <td>R{{price}}</td>
                  <td>{{qty}}</td>
-
+                <td><a href="#"><img class='cancel-img' src="cancel.png" alt=""></a></td> 
                </tr>
                {{/each}}
+
           </table>
-      </div>
+          <h3 class="price"></h3>
+
+          <button class='row btn-success checkoutBTN'>BUY</button>
+          <button class='row btn-danger checkoutBTN '>CANCEL</button>
+
+        </div>
   </div>
 </script>
 
@@ -79,22 +85,16 @@
 
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link topNav Home" href="#">Home</a>
+          <a class="nav-link topNav Home" href="#">Home <img class="home-img" src="home.png" alt=""></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link topNav Admin" href="#">Admin</a>
+          <a class="nav-link topNav Admin" href="#"> Admin <img class="add-img" src="add-button.png" alt=""> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link topNav cartButton" href="#"> Cart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link topNav login" href="#"> Login</a>
+          <a class="nav-link topNav cartButton" href="#"> Cart <img class="icon-cart" src="icon.png" alt=""></a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link topNav admin-btn" href="#">Sign up</a>
-        </li>
       </ul>
     </div>
 
@@ -149,7 +149,7 @@
 
       <h1>Welcome to the cart</h1>
 
-
+      
     </div>
 
     <footer>

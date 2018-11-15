@@ -19,7 +19,6 @@
     const cartTemplate = document.querySelector('.cartTable').innerHTML
     const compiledCart = Handlebars.compile(cartTemplate)
     const cartDisplay = document.querySelector('.cart')
-
     // cart selectors
     // const cartDisplay = document.querySelector('.cart')
 
@@ -94,8 +93,11 @@
 function viewCart () {
     axios.get('/api/getcart').then(function(result){
         let cartData = result.data.data
+        let price = result.data.price
         cartDisplay.innerHTML = compiledCart({cartData})
+        const totalPrice = document.querySelector('.price')
 
+        totalPrice.innerHTML = "R"+price
     })
 }
 
